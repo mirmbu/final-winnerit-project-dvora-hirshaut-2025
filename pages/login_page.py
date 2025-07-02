@@ -12,6 +12,7 @@ class LoginPage:
         self.__url = "https://www.saucedemo.com/"
         self.__products = page.locator('[data-test="title"]')
 
+
     #Methods
 
     def navigate(self):
@@ -38,4 +39,6 @@ class LoginPage:
     def expect_products_page(self):
         expect(self.__page).to_have_url(f"{self.__url}inventory.html")
         expect(self.__products).to_have_text("Products")
+
+
 
