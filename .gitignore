@@ -9,3 +9,4 @@ api_requests/__pycache__/
 reports/
 test-reports/
 allure-results/
+.env/
