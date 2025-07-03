@@ -1,5 +1,6 @@
 .idea/
 .venv/
+.env/
 test-results/
 tests/__pycache__/
 tests/ui/__pycache__/
@@ -9,4 +10,3 @@ api_requests/__pycache__/
 reports/
 test-reports/
 allure-results/
-.env/
