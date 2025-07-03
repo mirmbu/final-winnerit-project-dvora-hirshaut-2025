@@ -22,3 +22,12 @@ def items(page: Page):
 def cart(page: Page):
     cart = CartPage(page)
     return cart
+
+@pytest.fixture
+def base_reqres_url():
+    return "https://reqres.in/"
+
+
+@pytest.fixture
+def headers():
+    return {"x-api-key": "reqres-free-v1"}
