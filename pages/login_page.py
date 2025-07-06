@@ -19,7 +19,7 @@ class LoginPage:
         self.__page.goto(self.__url)
 
     def type_username(self, username):
-        self.__username.press_sequentially(username)
+        self.__username.press_sequentially(username, delay=100)
 
     def type_password(self, password):
         self.__password.fill(password)

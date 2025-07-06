@@ -1,7 +1,6 @@
 from playwright.sync_api import Page, expect
 from pages.item_page import ItemPage
 
-
 class ItemsPage:
 
     def __init__(self, page: Page):
@@ -26,6 +25,11 @@ class ItemsPage:
         expect(self.__page).to_have_url(f"https://www.saucedemo.com/inventory-item.html?id={id}")
         self.__item.back_to_products()
         expect(self.__page).to_have_url(self.__url)
+
+
+    def add_product_by_name(self, name):
+        self.__add_product = self.__page.locator(f'[data-test="add-to-cart-{name}"]')
+        self.__add_product.click()
 
 
     #add to chart
@@ -62,3 +66,7 @@ class ItemsPage:
 
     def expect_remove_button(self, element):
         expect(self.__page.locator(f'[id="remove-{element}"]')).to_have_text("Remove")
+
+
+    def expect_url(self):
+        expect(self.__page).to_have_url(self.__url)
