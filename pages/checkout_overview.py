@@ -21,7 +21,7 @@ class CheckoutOverview:
     def click_finish_button(self):
         self.__finish.click()
 
-    def click_details(self, id):
+    def click_details(self, id: int):
         self.__page.locator(f'[id="item_{id}_title_link"]').click()
         expect(self.__page).to_have_url(f"https://www.saucedemo.com/inventory-item.html?id={id}")
         self.__item.back_to_products()

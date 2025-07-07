@@ -16,13 +16,13 @@ class CheckoutInformationPage:
 
     #Methods
 
-    def type_first_name(self, first_name):
+    def type_first_name(self, first_name: str):
         self.__firstName.press_sequentially(first_name, delay=100)
 
-    def type_last_name(self, last_name):
+    def type_last_name(self, last_name: str):
         self.__lastName.press_sequentially(last_name, delay=100)
 
-    def type_zip_code(self, zip):
+    def type_zip_code(self, zip: str):
         self.__zip.fill(zip)
 
     def click_continue_button(self):
@@ -40,5 +40,5 @@ class CheckoutInformationPage:
     def expect_checkout_your_information(self):
         expect(self.__title).to_contain_text("Your Information")
 
-    def expect_error_message(self, message):
+    def expect_error_message(self, message: str):
         expect(self.__error_message).to_have_text(message)

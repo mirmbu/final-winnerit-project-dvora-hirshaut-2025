@@ -2,9 +2,9 @@ import requests
 import pytest
 from assertpy import assert_that
 
-
+@pytest.mark.api
 def test_get_users(base_reqres_url, headers):
-    response = requests.get(f'{base_reqres_url}/api/users?page=2', headers=headers, verify=False)
+    response = requests.get(f'{base_reqres_url}api/users?page=2', headers=headers, verify=False)
     response_body = response.json()
 
     #Assertions

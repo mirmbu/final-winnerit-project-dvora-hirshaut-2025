@@ -1,7 +1,10 @@
+import pytest
+
 from pages.cart_page import CartPage
 from pages.items_page import ItemsPage
 
 # successful e2e
+@pytest.mark.e2e
 def test_e2e_successful_order(login, items, cart, checkout_information, checkout_overview, checkout_complete):
     login.expect_credentials()
     login.type_username("standard_user")

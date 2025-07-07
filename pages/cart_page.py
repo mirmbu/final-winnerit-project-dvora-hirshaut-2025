@@ -21,7 +21,7 @@ class CartPage:
     def click_checkout(self):
         self.__checkout.click()
 
-    def remove_product_by_name(self, name):
+    def remove_product_by_name(self, name: str):
         name = name.replace(" ", "-").lower()
         self.__remove_product = self.__page.locator(f'[data-test="remove-{name}"]')
         self.__remove_product.click()

@@ -18,10 +18,10 @@ class LoginPage:
     def navigate(self):
         self.__page.goto(self.__url)
 
-    def type_username(self, username):
+    def type_username(self, username: str):
         self.__username.press_sequentially(username, delay=100)
 
-    def type_password(self, password):
+    def type_password(self, password: str):
         self.__password.fill(password)
 
     def click_login_button(self):
@@ -30,7 +30,7 @@ class LoginPage:
 
     #Assertions
 
-    def expect_error_message(self, message):
+    def expect_error_message(self, message: str):
         expect(self.__error_message).to_have_text(message)
 
     def expect_credentials(self):

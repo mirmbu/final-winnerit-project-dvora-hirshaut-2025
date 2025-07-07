@@ -21,20 +21,20 @@ class ItemsPage:
     #Methods
 
     #enter to specific item page.
-    def click_details(self, id):
+    def click_details(self, id: int):
         self.__page.locator(f'[id="item_{id}_title_link"]').click()
         expect(self.__page).to_have_url(f"https://www.saucedemo.com/inventory-item.html?id={id}")
         self.__item.back_to_products()
         expect(self.__page).to_have_url(self.__url)
 
     #add product by name
-    def add_product_by_name(self, name):
+    def add_product_by_name(self, name: str):
         name = name.replace(" ", "-").lower()
         self.__add_product = self.__page.locator(f'[data-test="add-to-cart-{name}"]')
         self.__add_product.click()
 
     #remove product by name
-    def remove_product_by_name(self, name):
+    def remove_product_by_name(self, name: str):
         name = name.replace(" ", "-").lower()
         self.__remove_product = self.__page.locator(f'[data-test="remove-{name}"]')
         self.__remove_product.click()
@@ -73,7 +73,7 @@ class ItemsPage:
         self.__sort.select_option("Price (low to high)")
         expect(self.__sort).to_have_text("Price (low to high)")
 
-    def expect_remove_button(self, name):
+    def expect_remove_button(self, name: str):
         name = name.replace(" ", "-").lower()
         expect(self.__page.locator(f'[id="remove-{name}"]')).to_have_text("Remove")
 

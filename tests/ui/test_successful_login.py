@@ -1,4 +1,7 @@
+import pytest
+
 #successful login
+@pytest.mark.login
 def test_successful_login(login):
     login.expect_credentials()
 
