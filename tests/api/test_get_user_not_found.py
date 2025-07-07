@@ -8,7 +8,7 @@ def test_user_not_found(base_reqres_url, headers):
 
     #Assertions
     assert response.status_code == 401
-    assert len(list(response_body)) == 0
+    # assert len(list(response_body)) == 0
     assert_that(response_body).is_empty()
 
     #Raise an error
