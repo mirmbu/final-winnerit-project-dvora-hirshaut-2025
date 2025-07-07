@@ -3,8 +3,8 @@ from pages.cart_page import CartPage
 from pages.checkout_complete import CheckoutComplete
 from pages.checkout_information_page import CheckoutInformationPage
 from pages.checkout_overview import CheckoutOverview
-from pages.item_page import ItemPage
-from pages.items_page import ItemsPage
+from pages.product_page import ProductPage
+from pages.products_page import ProductsPage
 from pages.login_page import LoginPage
 from playwright.sync_api import Page
 from dotenv import load_dotenv
@@ -19,9 +19,9 @@ def login(page: Page):
     return lp
 
 @pytest.fixture
-def items(page: Page):
-    items = ItemsPage(page)
-    return items
+def products(page: Page):
+    products = ProductsPage(page)
+    return products
 
 @pytest.fixture
 def cart(page: Page):

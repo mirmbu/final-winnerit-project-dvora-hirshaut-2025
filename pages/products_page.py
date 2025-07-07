@@ -1,8 +1,8 @@
 from faker.utils.decorators import lowercase
 from playwright.sync_api import Page, expect
-from pages.item_page import ItemPage
+from pages.product_page import ProductPage
 
-class ItemsPage:
+class ProductsPage:
 
     def __init__(self, page: Page):
         self.__page = page
@@ -19,6 +19,9 @@ class ItemsPage:
 
 
     #Methods
+
+    def navigate(self):
+        self.__page.goto(self.__url)
 
     #enter to specific item page.
     def click_details(self, id: int):

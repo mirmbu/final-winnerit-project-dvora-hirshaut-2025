@@ -1,6 +1,6 @@
 from playwright.sync_api import Page, expect
 
-class ItemPage:
+class ProductPage:
 
     def __init__(self, page: Page):
         self.__add_to_cart = page.get_by_role("button", name="Add to cart")

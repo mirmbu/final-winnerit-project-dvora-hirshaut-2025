@@ -11,7 +11,6 @@ class CheckoutComplete:
 
 
     #Methods
-
     def click_back_home(self):
         self.__back_home.click()
 
