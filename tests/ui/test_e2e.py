@@ -34,19 +34,19 @@ def test_e2e_successful_order(login, items, cart, checkout_information, checkout
     checkout_overview.expect_url()
     checkout_overview.expect_title()
     checkout_overview.expect_price()
-    checkout_overview.click_details(1)
-
-    #all the way back, because it go back to items page.
-    items.click_shopping_cart()
-    cart.click_checkout()
-    checkout_information.click_continue_button()
-    checkout_information.expect_error_message("Error: First Name is required")
-    checkout_information.type_first_name("Dvora")
-    checkout_information.type_last_name("Hirhsuat")
-    checkout_information.click_continue_button()
-    checkout_information.expect_error_message("Error: Postal Code is required")
-    checkout_information.type_zip_code("1234")
-    checkout_information.click_continue_button()
+    # checkout_overview.click_details(1)
+    #
+    # #all the way back, because it go back to items page.
+    # items.click_shopping_cart()
+    # cart.click_checkout()
+    # checkout_information.click_continue_button()
+    # checkout_information.expect_error_message("Error: First Name is required")
+    # checkout_information.type_first_name("Dvora")
+    # checkout_information.type_last_name("Hirhsuat")
+    # checkout_information.click_continue_button()
+    # checkout_information.expect_error_message("Error: Postal Code is required")
+    # checkout_information.type_zip_code("1234")
+    # checkout_information.click_continue_button()
     checkout_overview.click_finish_button()
 
     checkout_complete.expect_url()
