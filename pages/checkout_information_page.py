@@ -11,6 +11,7 @@ class CheckoutInformationPage:
         self.__zip = page.locator('[data-test="postalCode"]')
         self.__continue = page.locator('[data-test="continue"]')
         self.__cancel = page.locator('[data-test="cancel"]')
+        self.__error_message = page.locator('[data-test="error"]')
 
 
     #Methods
@@ -27,7 +28,6 @@ class CheckoutInformationPage:
     def click_continue_button(self):
         self.__continue.click()
 
-
     def click_cancel_button(self):
         self.__cancel.click()
 
@@ -40,3 +40,5 @@ class CheckoutInformationPage:
     def expect_checkout_your_information(self):
         expect(self.__title).to_contain_text("Your Information")
 
+    def expect_error_message(self, message):
+        expect(self.__error_message).to_have_text(message)

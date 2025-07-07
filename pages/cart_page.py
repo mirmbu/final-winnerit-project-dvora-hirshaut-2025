@@ -1,3 +1,6 @@
+from idlelib.replace import replace
+
+from faker.utils.decorators import lowercase
 from playwright.sync_api import Page, expect
 
 class CartPage:
@@ -17,6 +20,11 @@ class CartPage:
 
     def click_checkout(self):
         self.__checkout.click()
+
+    def remove_product_by_name(self, name):
+        name = name.replace(" ", "-").lower()
+        self.__remove_product = self.__page.locator(f'[data-test="remove-{name}"]')
+        self.__remove_product.click()
 
 
     #Assertsions

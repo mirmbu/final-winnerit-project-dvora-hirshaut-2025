@@ -1,5 +1,8 @@
 from playwright.sync_api import Page, expect
 from assertpy import assert_that
+from pages.item_page import ItemPage
+from pages.items_page import ItemsPage
+
 
 class CheckoutOverview:
 
@@ -10,10 +13,21 @@ class CheckoutOverview:
         self.__price = page.locator('[data-test="inventory-item-price"]')
         self.__total = page.locator('[data-test="subtotal-label"]')
         self.__finish = page.locator('[data-test="finish"]')
+        self.__cancel = page.locator('[data-test="cancel"]')
+        self.__item = ItemPage(page)
+        self.__items = ItemsPage(page)
 
     #Methods
     def click_finish_button(self):
         self.__finish.click()
+
+    def click_details(self, id):
+        self.__page.locator(f'[id="item_{id}_title_link"]').click()
+        expect(self.__page).to_have_url(f"https://www.saucedemo.com/inventory-item.html?id={id}")
+        self.__item.back_to_products()
+
+    def click_cancel(self):
+        self.__cancel.click()
 
     #Assertions
 
