@@ -10,4 +10,4 @@ reports/
 test-reports/
 allure-results/
 allure-report/
-.env/
+.env
