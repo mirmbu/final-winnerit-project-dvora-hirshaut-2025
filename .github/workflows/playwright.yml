@@ -50,7 +50,7 @@ jobs:
           path: gh-pages
 
     - name: Generate Allure Report
-      uses: simple-elf/allure-report-action@main
+      uses: simple-elf/allure-report-action@master
       if: always()
       with:
         allure_results: allure-results
@@ -59,7 +59,7 @@ jobs:
 
     - name: Deploy report to Github Pages
       if: always()
-      uses: peaceiris/actions-gh-pages@v4
+      uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
