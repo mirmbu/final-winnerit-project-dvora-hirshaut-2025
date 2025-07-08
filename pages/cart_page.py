@@ -11,9 +11,6 @@ class CartPage:
 
 
     #Methods
-    def navigate(self):
-        self.__page.goto(self.__url)
-
     def click_continue_shopping(self):
         self.__continue_shopping.click()
 

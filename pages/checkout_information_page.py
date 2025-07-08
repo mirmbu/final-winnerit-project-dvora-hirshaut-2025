@@ -15,9 +15,6 @@ class CheckoutInformationPage:
 
 
     #Methods
-    def navigate(self):
-        self.__page.goto(self.__url)
-
     def type_first_name(self, first_name: str):
         self.__firstName.press_sequentially(first_name, delay=100)
 

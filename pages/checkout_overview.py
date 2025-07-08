@@ -16,9 +16,6 @@ class CheckoutOverview:
         self.__product = ProductPage(page)
 
     #Methods
-    def navigate(self):
-        self.__page.goto(self.__url)
-
     def click_finish_button(self):
         self.__finish.click()
 

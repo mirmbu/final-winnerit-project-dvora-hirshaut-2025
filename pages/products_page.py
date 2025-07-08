@@ -15,19 +15,15 @@ class ProductsPage:
         self.__add_red_t_shirt = page.locator('[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]')
         self.__shopping_cart = page.locator('[data-test="shopping-cart-link"]')
         self.__sort = page.locator('[data-test="product-sort-container"]')
-        self.__item = ItemPage(page)
+        self.__product = ProductPage(page)
 
 
     #Methods
-
-    def navigate(self):
-        self.__page.goto(self.__url)
-
     #enter to specific item page.
     def click_details(self, id: int):
         self.__page.locator(f'[id="item_{id}_title_link"]').click()
         expect(self.__page).to_have_url(f"https://www.saucedemo.com/inventory-item.html?id={id}")
-        self.__item.back_to_products()
+        self.__product.back_to_products()
         expect(self.__page).to_have_url(self.__url)
 
     #add product by name
