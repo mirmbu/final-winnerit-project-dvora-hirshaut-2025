@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 data = {
     ("","secret_sauce", "Epic sadface: Username is required"),
@@ -8,7 +9,11 @@ data = {
     ("locked_out_user","secret_sauce", "Epic sadface: Sorry, this user has been locked out.")
 }
 
-@pytest.mark.parametrize("username, password, expected", data)
+df = pd.read_csv("login_test_cases.csv")
+json_data = df.to_json(orient="records", indent=4)
+
+
+@pytest.mark.parametrize("username, password, expected", json_data)
 @pytest.mark.login
 @pytest.mark.ui
 def test_declined_login(login, username: str, password: str, expected: str):
