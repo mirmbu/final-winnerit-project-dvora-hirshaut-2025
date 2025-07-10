@@ -14,7 +14,6 @@ class LoginPage:
 
 
     #Methods
-
     def navigate(self):
         self.__page.goto(self.__url)
 
@@ -29,13 +28,13 @@ class LoginPage:
 
 
     #Assertions
-
     def expect_error_message(self, message: str):
         expect(self.__error_message).to_have_text(message)
 
     def expect_credentials(self):
         expect(self.__credentials).to_be_visible()
 
+    #assert that get in to products page.
     def expect_products_page(self):
         expect(self.__page).to_have_url(f"{self.__url}inventory.html")
         expect(self.__products).to_have_text("Products")

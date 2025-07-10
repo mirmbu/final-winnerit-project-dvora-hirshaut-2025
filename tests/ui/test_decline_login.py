@@ -1,26 +1,24 @@
 import pytest
 import pandas as pd
-
-data = {
-    ("","secret_sauce", "Epic sadface: Username is required"),
-    ("standard_user","", "Epic sadface: Password is required"),
-    ("abcd","secret_sauce", "Epic sadface: Username and password do not match any user in this service"),
-    ("standard_user","1234", "Epic sadface: Username and password do not match any user in this service"),
-    ("locked_out_user","secret_sauce", "Epic sadface: Sorry, this user has been locked out.")
-}
-
-df = pd.read_csv("login_test_cases.csv")
-json_data = df.to_json(orient="records", indent=4)
+import os
 
 
-@pytest.mark.parametrize("username, password, expected", json_data)
+#load the csv file and convert it to tuple.
+def load_login_data():
+    file_path = os.path.join(os.path.dirname(__file__), "login_test_cases.csv")
+    df = pd.read_csv(file_path).fillna("")
+    return [tuple(row) for row in df.to_numpy()]
+
+
+
+@pytest.mark.parametrize("username,password,expected_result", load_login_data())
 @pytest.mark.login
 @pytest.mark.ui
-def test_declined_login(login, username: str, password: str, expected: str):
+def test_declined_login(login, username: str, password: str, expected_result: str):
     login.expect_credentials()
 
     login.type_username(username)
     login.type_password(password)
     login.click_login_button()
 
-    login.expect_error_message(expected)
+    login.expect_error_message(expected_result)

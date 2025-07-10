@@ -32,7 +32,6 @@ class CheckoutInformationPage:
 
 
     #Assertions
-
     def expect_checkout_information_url(self):
         expect(self.__page).to_have_url(self.__url)
 

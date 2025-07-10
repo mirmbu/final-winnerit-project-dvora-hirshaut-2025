@@ -6,11 +6,9 @@ from pages.checkout_overview import CheckoutOverview
 from pages.product_page import ProductPage
 from pages.products_page import ProductsPage
 from pages.login_page import LoginPage
-from playwright.sync_api import Page
-from dotenv import load_dotenv
-import os
+from playwright.sync_api import Page, expect
 
-load_dotenv()
+
 
 @pytest.fixture
 def login(page: Page):
@@ -42,12 +40,3 @@ def checkout_overview(page: Page):
 def checkout_complete(page: Page):
     complete = CheckoutComplete(page)
     return complete
-
-@pytest.fixture
-def base_reqres_url():
-    return "https://reqres.in/"
-
-
-@pytest.fixture
-def headers():
-    return {"x-api-key": os.getenv("X_API_KEY")}

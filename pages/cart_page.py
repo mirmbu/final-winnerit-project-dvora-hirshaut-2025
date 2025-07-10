@@ -17,6 +17,7 @@ class CartPage:
     def click_checkout(self):
         self.__checkout.click()
 
+    #get name, and remove the product by the name.
     def remove_product_by_name(self, name: str):
         name = name.replace(" ", "-").lower()
         self.__remove_product = self.__page.locator(f'[data-test="remove-{name}"]')
@@ -24,7 +25,6 @@ class CartPage:
 
 
     #Assertsions
-
     def expect_your_cart(self):
         expect(self.__your_cart).to_have_text("Your Cart")
 

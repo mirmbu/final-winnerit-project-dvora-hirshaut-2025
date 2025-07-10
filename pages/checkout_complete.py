@@ -15,7 +15,6 @@ class CheckoutComplete:
         self.__back_home.click()
 
     #Assertions
-
     def expect_url(self):
         expect(self.__page).to_have_url(self.__url)
 

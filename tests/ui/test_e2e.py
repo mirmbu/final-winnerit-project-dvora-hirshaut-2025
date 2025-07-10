@@ -1,6 +1,6 @@
 import pytest
 
-# successful e2e
+#successful order.
 @pytest.mark.e2e
 @pytest.mark.ui
 def test_e2e_successful_order(login, products, cart, checkout_information, checkout_overview, checkout_complete):
@@ -17,8 +17,10 @@ def test_e2e_successful_order(login, products, cart, checkout_information, check
     products.add_product_by_name("Sauce Labs Bolt T-Shirt")
     #expect remove button is visible
     products.expect_remove_button("Sauce Labs Backpack")
-    #click to see details of product with id=5
-    products.click_details(5)
+    #sort the products
+    products.sort_products("Name (Z to A)")
+    #expect the number of added products
+    products.expect_shopping_cart_number(3)
     #click on the shopping cart button
     products.click_shopping_cart()
 
@@ -49,12 +51,8 @@ def test_e2e_successful_order(login, products, cart, checkout_information, check
     #checkout complete page
     checkout_complete.expect_url()
     checkout_complete.expect_thank_you()
-    #click to back to products
-    checkout_complete.click_back_home()
 
-    #check that navigate back to products.
-    products.expect_url()
-
+#successful order + click to see details of a product.
 @pytest.mark.e2e
 @pytest.mark.ui
 def test_e2e_click_details(login, products, cart, checkout_information, checkout_overview, checkout_complete):
@@ -100,6 +98,7 @@ def test_e2e_click_details(login, products, cart, checkout_information, checkout
     checkout_overview.click_finish_button()
     checkout_complete.expect_thank_you()
 
+#remove button from the cart.
 @pytest.mark.e2e
 @pytest.mark.ui
 def test_e2e_remove_from_cart(login, products, cart, checkout_information, checkout_overview, checkout_complete):
@@ -116,6 +115,8 @@ def test_e2e_remove_from_cart(login, products, cart, checkout_information, check
     products.add_product_by_name("Sauce Labs Bike Light")
     products.add_product_by_name("Sauce Labs Onesie")
     products.add_product_by_name("Test.allTheThings() T-Shirt (Red)")
+    #expect the number of added products.
+    products.expect_shopping_cart_number(6)
     #click shopping cart
     products.click_shopping_cart()
     cart.expect_your_cart()
@@ -124,6 +125,8 @@ def test_e2e_remove_from_cart(login, products, cart, checkout_information, check
     cart.remove_product_by_name("Sauce Labs Fleece Jacket")
     cart.remove_product_by_name("Sauce Labs Bolt T-Shirt")
     cart.remove_product_by_name("Test.allTheThings() T-Shirt (Red)")
+    #expect the number of added products.
+    products.expect_shopping_cart_number(3)
     cart.click_checkout()
     #type checkout information
     checkout_information.type_first_name("Dvora")
@@ -134,6 +137,7 @@ def test_e2e_remove_from_cart(login, products, cart, checkout_information, check
     checkout_overview.click_finish_button()
     checkout_complete.expect_thank_you()
 
+#successful order + validation of checkout information page.
 @pytest.mark.e2e
 @pytest.mark.ui
 def test_e2e_checkout_information(login, products, cart, checkout_information, checkout_overview, checkout_complete):

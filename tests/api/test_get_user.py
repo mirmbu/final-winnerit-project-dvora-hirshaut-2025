@@ -1,15 +1,21 @@
-import requests
 import pytest
 from assertpy import assert_that
+from api_requests.user_request_generator import UserRequestGenerator
+
+
+user_request_generator = UserRequestGenerator()
+
 
 @pytest.mark.api
-def test_get_user_by_id(base_reqres_url, headers):
-    response = requests.get(f'{base_reqres_url}api/users/2', headers=headers, verify=False)
+def test_get_user():
+    response = user_request_generator.get_user(2)
     response_body = response.json()
 
     #Assertions
-    assert_that(response.status_code).is_equal_to(200)
+    #status code = 200
+    user_request_generator.validate_status_code(response, 200)
 
+    ##json structure
     assert response_body['data']['id'] == 2
     assert response_body['data']['email'] == 'janet.weaver@reqres.in'
 

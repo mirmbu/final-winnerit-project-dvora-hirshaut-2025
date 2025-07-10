@@ -1,8 +1,14 @@
 username,password,expected_result
-standard_user,secret_sauce,Success
 standard_user,wrong_password,Epic sadface: Username and password do not match any user in this service
 wrong_user,secret_sauce,Epic sadface: Username and password do not match any user in this service
 wrong_user,wrong_password,Epic sadface: Username and password do not match any user in this service
 ,secret_sauce,Epic sadface: Username is required
 standard_user,,Epic sadface: Password is required
 ,,Epic sadface: Username is required
+problem_user,wrong_password,Epic sadface: Username and password do not match any user in this service
+performance_glitch_user,wrong_password,Epic sadface: Username and password do not match any user in this service
+locked_out_user,wrong_password,Epic sadface: Username and password do not match any user in this service
+STANDARD_USER,secret_sauce,Epic sadface: Username and password do not match any user in this service
+standard_user,SECRET_SAUCE,Epic sadface: Username and password do not match any user in this service
+ standard_user ,secret_sauce,Epic sadface: Username and password do not match any user in this service
+standard_user , secret_sauce ,Epic sadface: Username and password do not match any user in this service
