@@ -14,3 +14,9 @@ class UsersRequestGenerator(RequestGenerator):
     def get_resource_users(self):
         return self.get("/unknown")
 
+
+    def delayed_response(self, delay: int):
+        return self.get(f"/users?delay={delay}")
+
+
+

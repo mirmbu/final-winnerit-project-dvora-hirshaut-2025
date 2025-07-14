@@ -22,7 +22,15 @@ class RequestGenerator:
 
 
     def put(self, endpoint: str, data: dict):
-        return requests.put(f"{self.__base_url}{endpoint}", headers=self.__headers, json=data)
+        return requests.put(f"{self.__base_url}{endpoint}", headers=self.__headers, json=data, verify=False)
+
+
+    def patch(self, endpoint: str, data: dict):
+        return requests.patch(f"{self.__base_url}{endpoint}", headers=self.__headers, json=data, verify=False)
+
+
+    def delete(self, endpoint: str):
+        return requests.delete(f"{self.__base_url}{endpoint}", headers=self.__headers, verify=False)
 
 
     def validate_status_code(self, response: Response, expected_status_code: int):
